@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Internet é Nossa</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#eef2fb;--ink:#14213d;--card:#fff;--muted:#5a6785;--line:#d5dcf0;--accent:#ffb703;--ok:#1f9d55;--bad:#d62839;--bubble:#e3e9fa;--scam:#fff7e0;--bia:#e8f7ee;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1426;--ink:#eaf0ff;--card:#18223d;--muted:#9fb0d6;--line:#2b3961;--bubble:#243256;--scam:#3a3217;--bia:#173a2a}}
+:root[data-theme="dark"]{--bg:#0d1426;--ink:#eaf0ff;--card:#18223d;--muted:#9fb0d6;--line:#2b3961;--bubble:#243256;--scam:#3a3217;--bia:#173a2a}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.5}
+.hid{display:none}
+#L1 h1,#L1 h2,#L1 h3{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.15;margin:0}#L1 .wrap{max-width:460px;margin:0 auto;padding:16px}#L1 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}#L1 .top h1{font-size:1.35rem}#L1 .prog{font-weight:800;background:var(--accent);color:#14213d;border-radius:99px;padding:2px 12px;font-size:.9rem}#L1 .phone{background:var(--card);border:2px solid var(--line);border-radius:26px;overflow:hidden}#L1 .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:800}#L1 .av{width:30px;height:30px;border-radius:50%;background:#4361ee;color:#fff;display:grid;place-items:center;font-size:.85rem}#L1 .chat{padding:14px;display:flex;flex-direction:column;gap:10px}#L1 .b{max-width:82%;padding:8px 12px;border-radius:16px;background:var(--bubble);font-size:.95rem}#L1 .b.me{align-self:flex-end;background:#4361ee;color:#fff}#L1 .scam{background:var(--scam);border:2px dashed var(--accent);border-radius:16px;padding:10px;max-width:100%}#L1 .hot{cursor:pointer;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:2px 4px;border-radius:6px;outline-offset:2px;border-bottom:2px dotted var(--muted)}#L1 .hot:hover,#L1 .hot:focus-visible{background:rgba(255,183,3,.35)}#L1 .hot.found{border-bottom:2px solid var(--bad);background:rgba(214,40,57,.12)}#L1 .sender{font-size:.8rem;color:var(--muted);display:block;margin-bottom:4px}#L1 .pic{font-size:2.6rem;text-align:center;margin:6px 0}#L1 .link{color:#2563eb;text-decoration:underline;word-break:break-all;display:block;margin:6px 0}#L1 .timer{display:inline-block;font-weight:800;color:var(--bad)}#L1 .tip{display:none;font-size:.78rem;background:var(--ink);color:var(--bg);border-radius:8px;padding:4px 8px;margin-top:2px;word-break:break-all}#L1 .link:hover+.tip,#L1 .link:focus-visible+.tip,#L1 .link.found+.tip{display:block}#L1 .tools{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 14px}#L1 .chip{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-weight:800;font-size:.85rem;cursor:pointer}#L1 .chip.found{border-color:var(--bad);background:rgba(214,40,57,.12)}#L1 .bia{display:flex;gap:10px;margin-top:14px;align-items:flex-start}#L1 .bia .av{background:var(--ok);flex:none;width:36px;height:36px}#L1 .say{background:var(--bia);border-radius:16px;padding:10px 14px;flex:1;min-height:48px}#L1 .say b{display:block;font-size:.8rem;color:var(--ok)}#L1 .clues{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px}#L1 .clues li{font-size:.9rem;padding:8px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line)}#L1 .clues li.on{border-color:var(--bad)}#L1 .clues li.off{color:var(--muted)}#L1 .deck{margin-top:16px}#L1 .deck h2{font-size:1.2rem;margin-bottom:8px}#L1 .opt{display:block;width:100%;text-align:left;margin-bottom:8px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}#L1 .opt:hover:not(:disabled){border-color:#4361ee}#L1 .opt:disabled{opacity:.5;cursor:not-allowed}#L1 .res{border-radius:16px;padding:14px;margin-top:10px}#L1 .res.bad{background:rgba(214,40,57,.12);border:2px solid var(--bad)}#L1 .btn{margin-top:10px;border:0;border-radius:99px;padding:10px 20px;background:var(--accent);color:#14213d;font:inherit;font-weight:800;cursor:pointer}#L1 .end{text-align:center;padding:26px 18px;background:var(--card);border:2px solid var(--accent);border-radius:26px}#L1 .badge{font-size:3.4rem}#L1 .end h2{font-size:1.8rem}#L1 .quote{font-weight:800;margin:14px 0}#L1 .main{margin-top:16px;padding:12px;border-radius:14px;background:#14213d;color:#fff;font-weight:800}
+
+
+#L2 h1,#L2 h2,#L2 h3{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.15;margin:0}#L2 .wrap{max-width:460px;margin:0 auto;padding:16px}#L2 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}#L2 .top h1{font-size:1.3rem}#L2 .prog{font-weight:800;background:var(--accent);color:#14213d;border-radius:99px;padding:2px 12px;font-size:.9rem}#L2 .phone{background:var(--card);border:2px solid var(--line);border-radius:26px;overflow:hidden}#L2 .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:800}#L2 .av{width:30px;height:30px;border-radius:50%;background:#4361ee;color:#fff;display:grid;place-items:center;font-size:.85rem;flex:none}#L2 .chat{padding:14px;display:flex;flex-direction:column;gap:10px}#L2 .b{max-width:85%;padding:8px 12px;border-radius:16px;background:var(--bubble);font-size:.95rem}#L2 .b.me{align-self:flex-end;background:#4361ee;color:#fff}#L2 .post{background:var(--scam);border:2px dashed var(--accent);border-radius:16px;padding:10px}#L2 .hot{cursor:pointer;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:2px 4px;border-radius:6px;outline-offset:2px;border-bottom:2px dotted var(--muted);display:block;width:100%;margin:2px 0}#L2 .hot:hover,#L2 .hot:focus-visible{background:rgba(255,183,3,.35)}#L2 .found{border-bottom:2px solid var(--bad)!important;background:rgba(214,40,57,.12)}#L2 .small{font-size:.8rem;color:var(--muted)}#L2 .title{font-family:'Baloo 2',system-ui,sans-serif;font-size:1.15rem;font-weight:800}#L2 .pic{height:90px;border-radius:12px;background:linear-gradient(135deg,#4361ee,#7209b7);display:grid;place-items:center;font-size:2.2rem;margin:4px 0}#L2 .shares{font-weight:800;color:var(--bad)}#L2 .tools{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 14px}#L2 .chip{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-weight:800;font-size:.85rem;cursor:pointer}#L2 .chip.found{border-color:var(--bad);background:rgba(214,40,57,.12)}#L2 .bia{display:flex;gap:10px;margin-top:14px;align-items:flex-start}#L2 .bia .av{background:var(--ok);width:36px;height:36px}#L2 .say{background:var(--bia);border-radius:16px;padding:10px 14px;flex:1;min-height:48px}#L2 .say b.n{display:block;font-size:.8rem;color:var(--ok)}#L2 .clues{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px}#L2 .clues li{font-size:.9rem;padding:8px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line)}#L2 .clues li.on{border-color:var(--bad)}#L2 .clues li.off{color:var(--muted)}#L2 .deck{margin-top:16px}#L2 .deck h2{font-size:1.2rem;margin-bottom:8px}#L2 .opt{display:block;width:100%;text-align:left;margin-bottom:8px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}#L2 .opt:hover:not(:disabled){border-color:#4361ee}#L2 .opt:disabled{opacity:.5;cursor:not-allowed}#L2 .res{border-radius:16px;padding:14px;margin-top:10px;background:rgba(214,40,57,.12);border:2px solid var(--bad)}#L2 .btn{margin-top:10px;border:0;border-radius:99px;padding:10px 20px;background:var(--accent);color:#14213d;font:inherit;font-weight:800;cursor:pointer}#L2 .end{padding:24px 18px;background:var(--card);border:2px solid var(--accent);border-radius:26px}#L2 .center{text-align:center}#L2 .main{margin-top:14px;padding:12px;border-radius:14px;background:#14213d;color:#fff;font-weight:800;text-align:center}#L2 .hid{display:none}#L2 :focus-visible{outline:3px solid #4361ee}
+
+.wrap{max-width:460px;margin:0 auto;padding:16px}
+.small{font-size:.8rem;color:var(--muted)}
+#L1 .hot{display:block;width:100%;margin:2px 0}
+#L0 .box{padding:24px 18px;background:var(--card);border:2px solid var(--accent);border-radius:26px;text-align:center}
+#L0 h1{font-size:1.5rem;margin-bottom:6px}
+#L0 input{font:inherit;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:80%;margin:10px 0;text-align:center}
+#L0 .btn{margin-top:8px;border:0;border-radius:99px;padding:10px 22px;background:var(--accent);color:#14213d;font:inherit;font-weight:800;cursor:pointer}
+#L0 canvas{width:100%;max-width:340px;aspect-ratio:3/4;margin:0 auto;border-radius:18px;border:2px solid var(--line);display:block;background:#1d2b53;touch-action:none}
+#L0 #am{margin:8px 0;text-align:center}
+#L0 .pad{display:grid;grid-template-columns:repeat(3,64px);grid-template-areas:". u ." "l d r";gap:6px;justify-content:center;margin-top:8px}
+#L0 .pad button{height:52px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:1.3rem;touch-action:none;user-select:none}
+#L0 [data-k=u]{grid-area:u}#L0 [data-k=l]{grid-area:l}#L0 [data-k=d]{grid-area:d}#L0 [data-k=r]{grid-area:r}
+
+
+
+#L3 h1,#L3 h2,#L3 h3{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.15;margin:0}#L3 .wrap{max-width:460px;margin:0 auto;padding:16px}#L3 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}#L3 .top h1{font-size:1.3rem}#L3 .prog{font-weight:800;background:var(--accent);color:#14213d;border-radius:99px;padding:2px 12px;font-size:.9rem}#L3 .phone{background:var(--card);border:2px solid var(--line);border-radius:26px;overflow:hidden}#L3 .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:800}#L3 .av{width:30px;height:30px;border-radius:50%;background:#4361ee;color:#fff;display:grid;place-items:center;font-size:.85rem;flex:none}#L3 .chat{padding:14px;display:flex;flex-direction:column;gap:10px}#L3 .b{max-width:85%;padding:8px 12px;border-radius:16px;background:var(--bubble);font-size:.95rem}#L3 .b.me{align-self:flex-end;background:#4361ee;color:#fff}#L3 .post{background:var(--scam);border:2px dashed var(--accent);border-radius:16px;padding:10px}#L3 .hot{cursor:pointer;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:2px 4px;border-radius:6px;outline-offset:2px;border-bottom:2px dotted var(--muted);display:block;width:100%;margin:2px 0}#L3 .hot:hover,#L3 .hot:focus-visible{background:rgba(255,183,3,.35)}#L3 .found{border-bottom:2px solid var(--bad)!important;background:rgba(214,40,57,.12)}#L3 .small{font-size:.8rem;color:var(--muted)}#L3 .title{font-family:'Baloo 2',system-ui,sans-serif;font-size:1.15rem;font-weight:800}#L3 .pic{height:90px;border-radius:12px;background:linear-gradient(135deg,#4361ee,#7209b7);display:grid;place-items:center;font-size:2.2rem;margin:4px 0}#L3 .shares{font-weight:800;color:var(--bad)}#L3 .tools{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 14px}#L3 .chip{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-weight:800;font-size:.85rem;cursor:pointer}#L3 .chip.found{border-color:var(--bad);background:rgba(214,40,57,.12)}#L3 .bia{display:flex;gap:10px;margin-top:14px;align-items:flex-start}#L3 .bia .av{background:var(--ok);width:36px;height:36px}#L3 .say{background:var(--bia);border-radius:16px;padding:10px 14px;flex:1;min-height:48px}#L3 .say b.n{display:block;font-size:.8rem;color:var(--ok)}#L3 .clues{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px}#L3 .clues li{font-size:.9rem;padding:8px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line)}#L3 .clues li.on{border-color:var(--bad)}#L3 .clues li.off{color:var(--muted)}#L3 .deck{margin-top:16px}#L3 .deck h2{font-size:1.2rem;margin-bottom:8px}#L3 .opt{display:block;width:100%;text-align:left;margin-bottom:8px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}#L3 .opt:hover:not(:disabled){border-color:#4361ee}#L3 .opt:disabled{opacity:.5;cursor:not-allowed}#L3 .res{border-radius:16px;padding:14px;margin-top:10px;background:rgba(214,40,57,.12);border:2px solid var(--bad)}#L3 .btn{margin-top:10px;border:0;border-radius:99px;padding:10px 20px;background:var(--accent);color:#14213d;font:inherit;font-weight:800;cursor:pointer}#L3 .end{padding:24px 18px;background:var(--card);border:2px solid var(--accent);border-radius:26px}#L3 .center{text-align:center}#L3 .main{margin-top:14px;padding:12px;border-radius:14px;background:#14213d;color:#fff;font-weight:800;text-align:center}#L3 .hid{display:none}#L3 :focus-visible{outline:3px solid #4361ee}@media (min-width:900px) and (min-height:560px){
+html,body{height:100%;overflow:hidden}
+.wrap{height:100vh;max-width:1240px;padding:12px 18px}
+.wrap:not(.hid){display:flex;flex-direction:column;justify-content:center}
+#L0{max-width:1000px}
+#intro,#final,#step2,#nm{width:100%;max-width:640px;margin-left:auto;margin-right:auto;max-height:calc(100vh - 24px);overflow:auto}
+#game:not(.hid){display:grid;grid-template-columns:1fr 1.3fr .8fr;grid-template-rows:auto auto minmax(0,1fr);gap:10px 16px;height:calc(100vh - 24px);width:100%}
+#game .top{grid-column:1/-1;margin:0}
+#game .phone{grid-column:1;grid-row:2/4;overflow:auto;min-height:0}
+#game .chat{gap:6px;padding:10px}
+#game .pic{height:52px!important;font-size:1.6rem!important;margin:2px 0!important}
+#game .title{font-size:.98rem!important}
+#game .tools{gap:5px;padding:0 10px 10px}
+#game .chip{padding:3px 10px;font-size:.76rem}
+#game .b{padding:5px 10px;font-size:.88rem}
+#game .bar{padding:6px 12px}
+#game .post{padding:6px!important}
+#game .hot{margin:1px 0!important;padding:1px 4px!important;line-height:1.3}
+#game .post .small{font-size:.74rem}
+#game .chat{padding:8px}
+#game .bia{grid-column:2;grid-row:2;margin:0}
+#game .clues{grid-column:2;grid-row:3;margin:0;overflow:auto;min-height:0;align-content:start;gap:5px}
+#game .clues li{font-size:.74rem;line-height:1.35;padding:4px 9px}
+#game .say{font-size:.86rem;padding:8px 12px}
+.say b ~ b{display:inline!important;font-size:inherit!important;color:inherit!important}
+#game .deck h2{font-size:1.05rem}
+#game .opt{padding:9px 12px;font-size:.9rem;margin-bottom:6px}
+#game .deck{grid-column:3;grid-row:2/4;margin:0;overflow:auto;min-height:0}
+#ar:not(.hid){display:grid;grid-template-columns:auto 300px;grid-template-rows:auto auto 1fr;gap:8px 24px;justify-content:center;align-content:center;height:calc(100vh - 24px)}
+#ar h1{grid-column:1/-1;text-align:center;margin:0!important}
+#ar canvas{grid-column:1;grid-row:2/4;height:calc(100vh - 90px);width:auto;max-width:none;margin:0}
+#ar #am{grid-column:2;grid-row:2;align-self:start}
+#ar .pad{grid-column:2;grid-row:3;align-self:start;justify-content:start}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="L0">
+<div id="nm" class="box"><div style="font-size:3rem">🕵️💻</div><h1>A Internet é Nossa</h1><p>Antes de entrar no computador, qual é o seu nome?</p><input id="pname" maxlength="14" placeholder="Seu nome" autocomplete="off"><br><button class="btn" id="go">Jogar</button></div>
+<div id="ar" class="hid"><h1 id="at" style="margin-bottom:8px"></h1><canvas id="cv" width="480" height="640"></canvas><div id="am"></div><div class="pad"><button data-k="u">▲</button><button data-k="l">◀</button><button data-k="d">▼</button><button data-k="r">▶</button></div></div>
+</div>
+<div class="wrap hid" id="L1">
+<div id="intro" class="end" style="text-align:left">
+<h1 style="font-size:1.8rem;text-align:center">Nível 1: O Golpe do Prêmio</h1><p class="small" style="margin:2px 0 10px;text-align:center;color:var(--muted)">A Internet é Nossa</p>
+<p>Você é <b>Lucas</b>, em casa depois da escola. Chegou uma mensagem dizendo que ganhou um celular novo. Sua amiga <b>Bia</b> pede para você investigar antes de clicar.</p>
+<h3 style="margin:12px 0 6px">Como funciona</h3>
+<ol style="padding-left:20px;margin:0 0 10px">
+<li><b>Investigue:</b> toque nas partes da mensagem (remetente, texto, link e contagem de tempo) e no botão “Procurar o sorteio nas redes oficiais”.</li>
+<li><b>Ache pistas:</b> cada parte suspeita fica marcada em vermelho e a Bia explica por quê. Há 9 sinais escondidos, e algumas checagens só aparecem depois de outras.</li>
+<li><b>Decida:</b> com 3 pistas ou mais, as opções A, B, C e D são liberadas.</li>
+<li><b>Errou?</b> Sem problema. Você vê a consequência, volta e analisa de novo.</li>
+</ol>
+<p style="text-align:center;margin:0"><button class="btn" id="start">Começar missão</button></p>
+</div>
+<div id="game" class="hid">
+<div class="top"><h1>O Golpe do Prêmio</h1><span class="prog" id="prog">0/5 pistas</span></div>
+<div class="phone">
+<div class="bar"><span class="av">P</span>Pedro</div>
+<div class="chat">
+<div class="b">E aí Lucas, viu o jogo ontem? ⚽</div>
+<div class="b me">Vi sim! Foi incrível</div>
+<div class="scam">
+<button class="hot" data-c="sender"><span class="sender">De: premios-oficial@sorteio-vip-br.xyz</span></button>
+<button class="hot" data-c="pic"><div class="pic">📱🎁</div></button>
+<button class="hot" data-c="msg"><b>PARABENS!! VOCE FOI SORTEADO! 🎉</b> Voce ganhou um novo celular! Para recebe seu premio, confirme seus dados no link abaixo.</button>
+<button class="hot" data-c="dados"><span class="small">Dados pedidos: nome completo, CPF, senha e número do cartão</span></button>
+<a class="link" href="#" data-c="link" onclick="return false">Clique aqui para confirmar</a>
+<span class="tip">⚠ Endereço real: http://megaprem1os-gratis.top/confirmar?id=8841</span>
+<button class="hot" data-c="urg">Você tem apenas <span class="timer" id="tm">10:00</span> minutos!</button>
+</div>
+</div>
+<div class="tools">
+<button class="chip" data-c="promo">🔎 Procurar o sorteio nas redes oficiais</button>
+<button class="chip" data-c="rules">📄 Procurar o regulamento</button>
+<button class="chip hid" data-c="whois">🌐 Ver quem criou o site</button>
+</div>
+</div>
+
+<div class="bia"><span class="av">B</span><div class="say" id="say"><b>Bia</b>Espera! Antes de clicar, vamos descobrir se isso é realmente verdade. Toque nas partes da mensagem para investigar: remetente, texto, link, urgência e promoção.</div></div>
+
+<ul class="clues" id="clues"></ul>
+
+<div class="deck">
+<h2>Qual é a sua decisão?</h2>
+<p id="lock" style="color:var(--muted);margin:0 0 8px">Encontre pelo menos 3 sinais para liberar a decisão.</p>
+<button class="opt" data-a="A" disabled>A) Clicar no link e preencher os dados.</button>
+<button class="opt" data-a="B" disabled>B) Compartilhar a mensagem com os amigos.</button>
+<button class="opt" data-a="C" disabled>C) Ignorar a mensagem, não fornecer informações e procurar a promoção nos canais oficiais da empresa.</button>
+<button class="opt" data-a="D" disabled>D) Responder ao remetente pedindo seus dados pessoais.</button>
+<div id="out"></div>
+</div>
+</div>
+
+<div id="final" class="hid">
+<div class="end" style="text-align:center">
+<div class="badge" style="font-size:3.4rem">🕵️</div>
+<p style="margin:0;color:var(--muted);font-weight:800">Lucas recebeu o título de</p>
+<h2>Detetive Digital</h2>
+<p class="quote">“Nem tudo que aparece na internet é o que parece. Antes de clicar, pare, pense e verifique.”</p>
+<p id="fsum" style="color:var(--muted)"></p>
+<div class="main">A Internet é Nossa — e nossas escolhas ajudam a torná-la mais segura.</div>
+<button class="btn" id="next">Próximo nível: A Notícia Bomba</button><br><button class="chip" id="again" style="margin-top:10px">Jogar este nível de novo</button>
+</div>
+</div>
+</div>
+<div class="wrap hid" id="L2">
+
+<div id="intro" class="end">
+<h1 class="center" style="font-size:1.8rem">Nível 2: A Notícia Bomba</h1>
+<p class="small center" style="margin:2px 0 10px">A Internet é Nossa</p>
+<p>Lucas está no celular quando Pedro manda um print de uma notícia que está bombando: <b>as escolas vão fechar por 30 dias</b>. Todo mundo está compartilhando. Bia desconfia e chama Lucas para investigar.</p>
+<h3 style="margin:12px 0 6px">Como funciona</h3>
+<ol style="padding-left:20px;margin:0 0 10px">
+<li><b>Investigue:</b> toque no título, na fonte, na data, na imagem e nos botões de checagem (buscar em outros sites e busca reversa da imagem).</li>
+<li><b>Ache pistas:</b> há 10 sinais escondidos, e algumas checagens só aparecem depois de outras. Você precisa de pelo menos 3.</li>
+<li><b>Decida:</b> o que fazer com a notícia? Cada escolha tem uma consequência diferente.</li>
+<li><b>Errou?</b> Você vê o que aconteceria e pode voltar para investigar de novo.</li>
+</ol>
+<p class="center" style="margin:0"><button class="btn" id="start">Começar investigação</button></p>
+</div>
+
+<div id="game" class="hid">
+<div class="top"><h1>A Notícia Bomba</h1><span class="prog" id="prog">0/5 pistas</span></div>
+<div class="phone">
+<div class="bar"><span class="av">P</span>Pedro</div>
+<div class="chat">
+<div class="b">LUCAS!! Viu isso??? Vão fechar todas as escolas 😱</div>
+<div class="b">Já mandei pro grupo da sala. Manda pra todo mundo antes que apaguem!</div>
+<div class="post">
+<button class="hot" data-c="source"><span class="small">noticiaja24h-brasil.net · Autor: não informado</span></button>
+<button class="hot" data-c="date"><span class="small">Publicado em 14/03/2021</span></button>
+<button class="hot" data-c="title"><span class="title">URGENTE!!! GOVERNO CONFIRMA: TODAS AS ESCOLAS FECHAM POR 30 DIAS! COMPARTILHE ANTES QUE APAGUEM!</span></button>
+<button class="hot" data-c="image"><div class="pic">🏫🚫</div></button>
+<button class="hot" data-c="text"><span class="small">“Segundo fontes que não podem ser reveladas, o decreto já foi assinado.”</span></button>
+<button class="hot" data-c="comments"><span class="small">💬 “Compartilhando!!” (repetido 300 vezes, perfis sem foto)</span></button>
+<span class="small">Compartilhamentos: <span class="shares" id="sh">12.482</span></span>
+</div>
+<div class="b me">Caramba... será que é verdade?</div>
+</div>
+<div class="tools">
+<button class="chip" data-c="others">🔎 Buscar em outros sites</button>
+<button class="chip" data-c="reverse">🖼️ Busca reversa da imagem</button>
+<button class="chip" data-c="about">🏷️ Ver a página “Quem somos”</button>
+<button class="chip hid" data-c="official">🏛️ Ver o calendário escolar oficial</button>
+</div>
+</div>
+
+<div class="bia"><span class="av">B</span><div class="say" id="say"><b class="n">Bia</b>Espera, Lucas! Notícia chamativa não é notícia verdadeira. Vamos investigar: toque nas partes do post e use os botões de checagem.</div></div>
+<ul class="clues" id="clues"></ul>
+
+<div class="deck">
+<h2>O que Lucas vai fazer?</h2>
+<p id="lock" class="small" style="margin:0 0 8px"></p>
+<button class="opt" data-a="A" disabled>A) Compartilhar agora no grupo: se for verdade, todo mundo precisa saber.</button>
+<button class="opt" data-a="B" disabled>B) Compartilhar com o aviso “não sei se é verdade, mas vai que é”.</button>
+<button class="opt" data-a="C" disabled>C) Não compartilhar e avisar o Pedro de que a notícia tem sinais de ser falsa.</button>
+<button class="opt" data-a="D" disabled>D) Comentar que o autor é um idiota e que quem compartilhou é bobo.</button>
+<div id="out"></div>
+</div>
+</div>
+
+<div id="step2" class="hid">
+<div class="top"><h1>Hora de avisar o grupo</h1></div>
+<div class="bia"><span class="av">B</span><div class="say"><b class="n">Bia</b>Boa decisão! Mas o Pedro já mandou no grupo da sala. Como você vai corrigir isso?</div></div>
+<div class="deck">
+<button class="opt" data-b="1">1) Mandar no grupo: “Cuidado, essa notícia é falsa!” e mais nada.</button>
+<button class="opt" data-b="2">2) Mandar no grupo as provas que achamos (data antiga, fonte desconhecida, nenhum site confiável) e chamar o Pedro para ajudar a corrigir, sem humilhar ninguém.</button>
+<button class="opt" data-b="3">3) Não falar nada: o grupo que se vire.</button>
+<div id="out2"></div>
+</div>
+</div>
+
+<div id="final" class="hid">
+<div class="end center">
+<div style="font-size:3.4rem">🛡️</div>
+<p class="small" style="margin:0;font-weight:800">Lucas ganhou o título de</p>
+<h2 style="font-size:1.8rem">Guardião da Verdade</h2>
+<p style="font-weight:800;margin:12px 0">“Antes de compartilhar, pare, pense e verifique.”</p>
+<p id="fsum" class="small"></p>
+<div style="text-align:left;margin:10px 0">
+<h3 style="font-size:1.1rem">Por que verificar antes de compartilhar?</h3>
+<p style="margin:4px 0">Uma notícia falsa se espalha mais rápido do que a correção. Cada compartilhamento é como dizer “eu confio nisso”, e muita gente acredita porque veio de você. Sem querer, podemos assustar pessoas, causar confusão e ajudar quem inventa mentiras para ganhar cliques.</p>
+<p style="margin:4px 0">Checar leva poucos minutos: veja quem publicou, a data, se o título é exagerado, se outros sites confiáveis falam do assunto e se a imagem é de verdade.</p>
+</div>
+<div class="main">A Internet é Nossa. Quando cada um de nós verifica antes de compartilhar, ela fica mais verdadeira e mais segura para todos.</div>
+<button class="btn" id="next2">Próximo nível: Quem é esse amigo?</button><br><button class="chip" id="again" style="margin-top:10px">Jogar este nível de novo</button> <button class="chip" id="restart">Recomeçar do Nível 1</button>
+</div>
+</div>
+
+</div>
+<div class="wrap hid" id="L3">
+<div id="intro" class="end"><h1 class="center" style="font-size:1.8rem">Nível 3: Quem é esse amigo?</h1><p class="small center" style="margin:2px 0 10px">A Internet é Nossa</p>
+<p>No chat de um jogo online, um perfil novo chamado <b>Rafa_13</b> puxou conversa com <b>Lucas</b> e já quer ser “melhor amigo”. A Bia acha estranho e chama Lucas para investigar antes de responder.</p>
+<h3 style="margin:12px 0 6px">Como funciona</h3><ol style="padding-left:20px;margin:0 0 10px"><li><b>Investigue:</b> toque no perfil e nas mensagens, e use as checagens.</li><li><b>Ache pistas:</b> há 9 sinais de alerta, e algumas checagens só aparecem depois de outras. Você precisa de pelo menos 3.</li><li><b>Decida:</b> cada escolha tem uma consequência diferente.</li><li><b>Errou?</b> Você vê o que aconteceria e volta para investigar.</li></ol>
+<p class="center" style="margin:0"><button class="btn" id="start">Começar investigação</button></p></div>
+<div id="game" class="hid"><div class="top"><h1>Quem é esse amigo?</h1><span class="prog" id="prog">0/9 pistas</span></div>
+<div class="phone"><div class="bar"><span class="av">R</span>Rafa_13</div><div class="chat">
+<button class="hot" data-c="profile"><span class="small">Perfil criado há 3 dias · 0 amigos em comum · quase sem publicações</span></button>
+<div class="b">Oi Lucas! Joguei contra você e achei demais 😎</div>
+<button class="hot" data-c="gift"><div class="b">Quer skins grátis? Tenho um código só pra você!</div></button>
+<button class="hot" data-c="info"><div class="b">Em qual escola você estuda? E onde mora? Acho que moro perto!</div></button>
+<button class="hot" data-c="secret"><div class="b">Esse papo é nosso segredo, tá? Não conta pros seus pais.</div></button>
+<button class="hot" data-c="app"><div class="b">Vamos conversar em outro app, é mais privado.</div></button>
+<button class="hot" data-c="photo"><div class="b">Manda uma foto sua pra eu ver quem é meu amigo?</div></button>
+<button class="hot" data-c="pressure"><div class="b">Por que não responde? Achei que éramos amigos... (<span id="sh">3</span> mensagens novas)</div></button>
+</div><div class="tools"><button class="chip hid" data-c="reverse">🖼️ Busca reversa da foto do perfil</button><button class="chip hid" data-c="age">🎂 Conferir a idade que ele diz ter</button></div></div>
+<div class="bia"><span class="av">B</span><div class="say" id="say"><b class="n">Bia</b>Lucas, calma! Antes de responder, vamos descobrir quem é essa pessoa. Toque no perfil e nas mensagens dele.</div></div>
+<ul class="clues" id="clues"></ul>
+<div class="deck"><h2>O que Lucas vai fazer?</h2><p id="lock" class="small" style="margin:0 0 8px"></p>
+<button class="opt" data-a="A" disabled>A) Responder: ele parece legal. Contar a escola e onde moro.</button>
+<button class="opt" data-a="B" disabled>B) Aceitar trocar de app para conversar em particular.</button>
+<button class="opt" data-a="C" disabled>C) Parar de responder, bloquear, denunciar e contar a um adulto de confiança.</button>
+<button class="opt" data-a="D" disabled>D) Mandar uma foto só dessa vez para ele me deixar em paz.</button>
+<div id="out"></div></div></div>
+<div id="step2" class="hid"><div class="top"><h1>Como pedir ajuda</h1></div><div class="bia"><span class="av">B</span><div class="say"><b class="n">Bia</b>Ótima decisão! Você não tem culpa de nada. Agora, como pedir ajuda do jeito certo?</div></div>
+<div class="deck"><button class="opt" data-b="1">1) Só bloquear o perfil e não falar com ninguém.</button>
+<button class="opt" data-b="2">2) Guardar os prints, bloquear, denunciar na plataforma e contar a um adulto de confiança.</button>
+<button class="opt" data-b="3">3) Apagar tudo e fingir que nada aconteceu.</button><div id="out2"></div></div></div>
+<div id="final" class="hid"><div class="end center"><div style="font-size:3.4rem">🏅</div><p class="small" style="margin:0;font-weight:800">Certificado de conclusão</p><h2 style="font-size:1.8rem">Lucas, Guardião da Internet</h2>
+<p style="font-weight:800;margin:10px 0">“Pare, pense e verifique. Quem protege a si e aos outros torna a internet melhor.”</p><p id="fsum" class="small"></p>
+<div style="text-align:left;margin:8px 0"><h3 style="font-size:1.1rem">Meu compromisso</h3><ul style="margin:4px 0;padding-left:20px"><li>Paro, penso e verifico antes de clicar e de compartilhar.</li><li>Protejo meus dados e não guardo segredos com desconhecidos.</li><li>Bloqueio, denuncio e conto a um adulto de confiança quando algo estiver errado.</li><li>Trato as pessoas com respeito, porque a internet é feita de gente.</li></ul><p class="small">Se algo assim acontecer, fale com um adulto de confiança. Denúncias: Disque 100 e SaferNet.</p></div>
+<div class="main">A Internet é Nossa. Crianças e adolescentes têm direito a uma internet segura, respeitosa e que proteja seus dados, e cada escolha nossa ajuda a construir esse espaço.</div>
+<button class="chip" id="again">Jogar este nível de novo</button> <button class="chip" id="restart">Recomeçar do início</button></div></div>
+</div>
+<script>
+window.goLevel=function(n){document.getElementById("L3").classList.toggle("hid",n!==3);document.getElementById("L0").classList.toggle("hid",n!==0);document.getElementById("L1").classList.toggle("hid",n!==1);document.getElementById("L2").classList.toggle("hid",n!==2);window.scrollTo(0,0)};
+(function(){var root=document.getElementById("L1");
+
+var UN={link:"whois"};var CL={dados:["Dados pedidos","Nome, CPF, senha e cartão para “receber” um prêmio grátis? Prêmio de verdade nunca pede senha nem cartão."],pic:["Imagem","Foto genérica de celular, sem nome de campanha, data ou regulamento. Qualquer um copia uma imagem assim."],rules:["Regulamento","Sorteio sério tem regulamento com datas, regras e CNPJ. Aqui não existe nada disso."],whois:["Quem criou o site","Registrado há 2 dias, com dono escondido. Site oficial existe há anos e mostra o responsável."],
+
+sender:["Remetente","O endereço termina em .xyz e não pertence à empresa. Empresas de verdade usam o próprio domínio."],
+link:["Link","Passe o mouse (ou toque) no link: o endereço real não é o site oficial. Esse é um clássico link falso. Apareceu uma nova checagem: ver quem criou o site."],
+msg:["Mensagem","Tem erros de escrita (“recebe”, “premio”, sem acentos) e uma promessa grande demais. Empresas revisam seus textos."],
+urg:["Urgência","“Só 10 minutos!” é pressão para você agir sem pensar. Golpistas adoram pressa."],
+promo:["Promoção","Nenhum sorteio como esse aparece nas redes oficiais da empresa. Se a promoção fosse real, ela estaria lá."]};
+var FB={
+A:"Lucas preencheu nome, CPF e senha. Dias depois, alguém tentou usar os dados dele para abrir contas e fazer compras. O celular novo nunca chegou.",
+B:"Pedro e outros amigos clicaram no link por confiarem em Lucas. Agora vários perfis foram invadidos e o golpe se espalhou.",
+D:"Lucas mandou seus dados ao remetente. O golpista agora sabe quem ele é e começou a enviar mensagens cada vez mais convincentes."};
+var found={},t=600,iv;
+var $=function(s){return root.querySelector(s)};
+function render(){
+var n=Object.keys(found).length;
+$("#prog").textContent=n+"/"+Object.keys(CL).length+" pistas";
+$("#clues").innerHTML=Object.keys(CL).map(function(k){
+return found[k]?'<li class="on">🚩 <b>'+CL[k][0]+':</b> '+CL[k][1]+'</li>':'<li class="off">❔ Pista escondida</li>'}).join("");
+root.querySelectorAll("[data-c]").forEach(function(e){e.classList.toggle("found",!!found[e.dataset.c])});
+var ok=n>=3;
+root.querySelectorAll(".opt").forEach(function(b){b.disabled=!ok});
+$("#lock").textContent=ok?"Você já tem sinais suficientes. Escolha com cuidado.":"Encontre pelo menos 3 sinais para liberar a decisão. Faltam "+(3-n)+".";
+}
+function say(h){$("#say").innerHTML="<b>Bia</b>"+h}
+root.querySelectorAll("[data-c]").forEach(function(e){
+e.addEventListener("click",function(){
+var k=e.dataset.c;
+if(!found[k]){found[k]=1;var u=UN[k];if(u){var el=root.querySelector('[data-c="'+u+'"]');if(el)el.classList.remove("hid")}
+var n=Object.keys(found).length;
+say("Boa! <b style='display:inline;color:inherit'>"+CL[k][0]+":</b> "+CL[k][1]+(n==3?" Já são 3 sinais, dá para decidir!":""))}
+render()})});
+function tick(){t=t>0?t-1:600;var m=Math.floor(t/60),s=t%60;$("#tm").textContent=m+":"+(s<10?"0":"")+s}
+$("#start").addEventListener("click",function(){$("#intro").classList.add("hid");$("#game").classList.remove("hid");window.scrollTo(0,0);iv=setInterval(tick,1000)});
+var S0=$("#say").innerHTML;
+root.querySelectorAll(".opt").forEach(function(b){
+b.addEventListener("click",function(){
+var a=b.dataset.a,o=$("#out");
+if(a==="C"){
+clearInterval(iv);
+say("Boa! Na internet, não devemos confiar em uma mensagem só porque ela parece verdadeira. Sempre verifique a fonte, o endereço do site e procure informações nos canais oficiais.");
+$("#fsum").textContent="Você achou "+Object.keys(found).length+" de "+Object.keys(CL).length+" sinais de golpe.";
+setTimeout(function(){$("#game").classList.add("hid");$("#final").classList.remove("hid");window.scrollTo(0,0)},1600);
+o.innerHTML='<div class="res" style="background:rgba(31,157,85,.15);border:2px solid var(--ok)"><b>✅ Decisão certa!</b></div>';
+}else{
+o.innerHTML='<div class="res bad"><b>Consequência (fictícia):</b> '+FB[a].split("Lucas").join(PN())+'<br><button class="btn" id="back">Voltar e analisar de novo</button></div>';
+say("Opa, não foi uma boa escolha. Mas é só um jogo: vamos olhar a mensagem de novo e achar mais sinais.");
+$("#back").addEventListener("click",function(){o.innerHTML="";window.scrollTo(0,0)});
+}})});
+$("#again").addEventListener("click",function(){
+found={};t=600;$("#tm").textContent="10:00";$("#out").innerHTML="";$("#say").innerHTML=S0;
+$("#final").classList.add("hid");$("#game").classList.remove("hid");
+clearInterval(iv);iv=setInterval(tick,1000);render();window.scrollTo(0,0)});
+render();
+
+window.reset1=function(){found={};t=600;$("#tm").textContent="10:00";$("#out").innerHTML="";$("#say").innerHTML=S0;clearInterval(iv);$("#final").classList.add("hid");$("#game").classList.add("hid");$("#intro").classList.remove("hid");render()};
+$("#next").addEventListener("click",function(){clearInterval(iv);window.goLevel(0);window.ARC(1)});
+})();
+(function(){var root=document.getElementById("L2");
+
+var UN={others:"official"};var CL={image:["Imagem","A foto não tem legenda, crédito nem local. Imagem sem origem é um alerta; use a busca reversa para ir mais fundo."],text:["Texto","“Fontes que não podem ser reveladas”, sem nomes e sem número de decreto. Notícia séria cita quem falou e mostra o documento."],comments:["Comentários","Centenas de comentários iguais de perfis sem foto e recém-criados: parecem robôs. Perfis falsos fazem a mentira parecer popular."],about:["Quem somos","O site não tem “Quem somos”, contato nem CNPJ. Quem publica notícia de verdade se identifica."],official:["Calendário oficial","O calendário escolar oficial segue normal, sem aviso de fechamento. A fonte oficial desmente."],
+
+source:["Fonte","O site “noticiaja24h-brasil.net” é desconhecido, não tem autor nem página “quem somos”. Notícia séria mostra quem escreveu."],
+date:["Data","A notícia é de 14/03/2021: é antiga e foi reciclada. Um fato de anos atrás não pode ser “urgente” hoje."],
+title:["Título","Muitas letras maiúsculas, exclamações e o pedido “compartilhe antes que apaguem”. Isso é feito para provocar medo e pressa."],
+others:["Outras fontes","Nenhum portal confiável noticia o fechamento das escolas, e o site oficial da secretaria de educação não tem aviso. Notícia dessa importância estaria em todo lugar. Apareceu uma nova checagem: o calendário escolar oficial."],
+reverse:["Imagem","A busca reversa mostra que a foto é de um comunicado antigo, de outro assunto. A imagem foi reaproveitada para parecer prova."]};
+var FB={
+A:"Em minutos, o print chegou a centenas de pessoas. Pais ligaram para a escola, que precisou publicar um aviso dizendo que era mentira. Muita gente ficou assustada e o nome de Lucas aparece como quem espalhou.",
+B:"O aviso “não sei se é verdade” sumiu quando o print foi repassado. Só ficou a manchete, e a notícia falsa continuou se espalhando mesmo assim.",
+D:"A discussão virou briga no grupo. Ninguém falou da notícia, o autor nem soube dos xingamentos e a mentira continuou circulando."};
+var FB2={
+1:"O grupo viu o aviso, mas sem provas alguns acharam que era implicância. Teve gente que continuou compartilhando. Mostrar o porquê faz toda a diferença. Tente de novo.",
+3:"Sem correção, o print continuou circulando e chegou a outras turmas. Quem sabe a verdade tem um papel importante em ajudar os outros. Tente de novo."};
+var found={},n0=12482,iv,$=function(s){return root.querySelector(s)};
+var S0=$("#say").innerHTML;
+function show(id){["intro","game","step2","final"].forEach(function(x){$("#"+x).classList.toggle("hid",x!==id)});window.scrollTo(0,0)}
+function say(h){$("#say").innerHTML='<b class="n">Bia</b>'+h}
+function render(){
+var n=Object.keys(found).length,ok=n>=3;
+$("#prog").textContent=n+"/"+Object.keys(CL).length+" pistas";
+$("#clues").innerHTML=Object.keys(CL).map(function(k){return found[k]?'<li class="on">🚩 <b>'+CL[k][0]+':</b> '+CL[k][1]+'</li>':'<li class="off">❔ Pista escondida</li>'}).join("");
+root.querySelectorAll("[data-c]").forEach(function(e){e.classList.toggle("found",!!found[e.dataset.c])});
+root.querySelectorAll(".opt[data-a]").forEach(function(b){b.disabled=!ok});
+$("#lock").textContent=ok?"Você já tem sinais suficientes. Escolha com cuidado.":"Encontre pelo menos 3 sinais para liberar a decisão. Faltam "+(3-n)+".";
+}
+root.querySelectorAll("[data-c]").forEach(function(e){e.addEventListener("click",function(){
+var k=e.dataset.c;
+if(!found[k]){found[k]=1;var u=UN[k];if(u){var el=root.querySelector('[data-c="'+u+'"]');if(el)el.classList.remove("hid")}var n=Object.keys(found).length;say("<b>"+CL[k][0]+":</b> "+CL[k][1]+(n==3?" Já são 3 sinais, dá para decidir!":""))}
+render()})});
+function start(){clearInterval(iv);iv=setInterval(function(){n0+=Math.floor(Math.random()*40)+5;$("#sh").textContent=n0.toLocaleString("pt-BR")},1200)}
+$("#start").addEventListener("click",function(){show("game");start()});
+root.querySelectorAll(".opt[data-a]").forEach(function(b){b.addEventListener("click",function(){
+var a=b.dataset.a,o=$("#out");
+if(a==="C"){clearInterval(iv);o.innerHTML="";show("step2")}
+else{o.innerHTML='<div class="res"><b>Consequência (fictícia):</b> '+FB[a].split("Lucas").join(PN())+'<br><button class="btn" id="back">Voltar e investigar de novo</button></div>';
+say("Opa, não foi uma boa escolha. É só um jogo: volte, procure mais sinais e pense de novo.");
+$("#back").addEventListener("click",function(){o.innerHTML="";window.scrollTo(0,0)})}})});
+root.querySelectorAll(".opt[data-b]").forEach(function(b){b.addEventListener("click",function(){
+var v=b.dataset.b,o=$("#out2");
+if(v==="2"){$("#fsum").textContent="Você achou "+Object.keys(found).length+" de "+Object.keys(CL).length+" sinais de notícia falsa e ajudou o grupo a se corrigir.";show("final")}
+else{o.innerHTML='<div class="res"><b>Consequência (fictícia):</b> '+FB2[v]+'</div>'}})});
+$("#again").addEventListener("click",function(){found={};n0=12482;$("#sh").textContent="12.482";$("#out").innerHTML="";$("#out2").innerHTML="";$("#say").innerHTML=S0;render();show("game");start()});
+render();
+
+window.reset2=function(){found={};n0=12482;$("#sh").textContent="12.482";$("#out").innerHTML="";$("#out2").innerHTML="";$("#say").innerHTML=S0;clearInterval(iv);render();show("intro")};
+$("#restart").addEventListener("click",function(){window.reset2();window.reset1();window.goLevel(0);window.ARC(0)});
+})();
+
+(function(){var root=document.getElementById("L3");
+
+var UN={profile:"reverse",reverse:"age"};var CL={
+profile:["Perfil","Criado há 3 dias, sem amigos em comum e quase sem publicações. Perfil novo e vazio é um alerta. Nova checagem: busca reversa da foto."],
+gift:["Presente","Oferecer skins ou presentes a quem acabou de conhecer é um jeito de ganhar confiança rápido. Desconfie de agrados sem motivo."],
+info:["Dados pessoais","Escola e endereço são dados que desconhecidos não precisam saber. Nunca compartilhe com quem você não conhece de verdade."],
+secret:["Segredo","“Não conta pros seus pais”: quem pede segredo quer evitar que um adulto veja a conversa. É um dos maiores sinais de alerta."],
+app:["Trocar de app","Levar a conversa para um lugar mais privado, longe das regras e da moderação do jogo, é sinal de perigo."],
+photo:["Pedido de foto","Pedir foto de quem acabou de conhecer não é normal. Fotos enviadas podem ser guardadas e usadas contra você."],
+pressure:["Pressão","Fazer você se sentir culpado por não responder é manipulação. Amigo de verdade respeita seu tempo e seu “não”."],
+reverse:["Foto do perfil","A mesma foto aparece em outros perfis com nomes diferentes: é uma foto roubada. Nova checagem: a idade."],
+age:["Idade","Ele diz ter 13 anos, mas fala de trabalho e de dirigir. A história não fecha: pode ser um adulto fingindo ser criança."]};
+var FB={A:"Rafa soube a escola e o bairro de Lucas e começou a aparecer em outros jogos com contas diferentes. Dados dados a desconhecidos saem do seu controle.",
+B:"No outro app não há as proteções do jogo e ninguém mais vê a conversa. Foi aí que os pedidos ficaram mais estranhos e Lucas se sentiu preso.",
+D:"A foto foi guardada e usada para pressionar Lucas a mandar mais coisas. Foto enviada nunca mais volta. Lucas não tem culpa, mas precisa contar a um adulto agora."};
+var FB2={1:"Bloquear ajuda, mas Lucas ficou sozinho com a preocupação e o perfil continuou procurando outras crianças. Sem denúncia e sem adulto, o problema não acaba. Tente de novo.",3:"Apagar tudo tirou as provas, e Lucas continuou com medo sozinho. Ele não fez nada de errado: contar nunca é dedurar. Tente de novo."};
+var found={},n0=3,iv,$=function(s){return root.querySelector(s)};
+var S0=$("#say").innerHTML;
+function show(id){["intro","game","step2","final"].forEach(function(x){$("#"+x).classList.toggle("hid",x!==id)});window.scrollTo(0,0)}
+function say(h){$("#say").innerHTML='<b class="n">Bia</b>'+h}
+function render(){
+var n=Object.keys(found).length,ok=n>=3;
+$("#prog").textContent=n+"/"+Object.keys(CL).length+" pistas";
+$("#clues").innerHTML=Object.keys(CL).map(function(k){return found[k]?'<li class="on">🚩 <b>'+CL[k][0]+':</b> '+CL[k][1]+'</li>':'<li class="off">❔ Pista escondida</li>'}).join("");
+root.querySelectorAll("[data-c]").forEach(function(e){e.classList.toggle("found",!!found[e.dataset.c])});
+root.querySelectorAll(".opt[data-a]").forEach(function(b){b.disabled=!ok});
+$("#lock").textContent=ok?"Você já tem sinais suficientes. Escolha com cuidado.":"Encontre pelo menos 3 sinais para liberar a decisão. Faltam "+(3-n)+".";
+}
+root.querySelectorAll("[data-c]").forEach(function(e){e.addEventListener("click",function(){
+var k=e.dataset.c;
+if(!found[k]){found[k]=1;var u=UN[k];if(u){var el=root.querySelector('[data-c="'+u+'"]');if(el)el.classList.remove("hid")}var n=Object.keys(found).length;say("<b>"+CL[k][0]+":</b> "+CL[k][1]+(n==3?" Já são 3 sinais, dá para decidir!":""))}
+render()})});
+function start(){clearInterval(iv);iv=setInterval(function(){n0+=1;$("#sh").textContent=n0.toLocaleString("pt-BR")},1200)}
+$("#start").addEventListener("click",function(){show("game");start()});
+root.querySelectorAll(".opt[data-a]").forEach(function(b){b.addEventListener("click",function(){
+var a=b.dataset.a,o=$("#out");
+if(a==="C"){clearInterval(iv);o.innerHTML="";show("step2")}
+else{o.innerHTML='<div class="res"><b>Consequência (fictícia):</b> '+FB[a].split("Lucas").join(PN())+'<br><button class="btn" id="back">Voltar e investigar de novo</button></div>';
+say("Opa, não foi uma boa escolha. É só um jogo: volte, procure mais sinais e pense de novo.");
+$("#back").addEventListener("click",function(){o.innerHTML="";window.scrollTo(0,0)})}})});
+root.querySelectorAll(".opt[data-b]").forEach(function(b){b.addEventListener("click",function(){
+var v=b.dataset.b,o=$("#out2");
+if(v==="2"){$("#fsum").textContent="Você achou "+Object.keys(found).length+" de "+Object.keys(CL).length+" sinais de alerta e pediu ajuda do jeito certo.";show("final")}
+else{o.innerHTML='<div class="res"><b>Consequência (fictícia):</b> '+FB2[v]+'</div>'}})});
+$("#again").addEventListener("click",function(){found={};n0=3;$("#sh").textContent="3";$("#out").innerHTML="";$("#out2").innerHTML="";$("#say").innerHTML=S0;render();show("game");start()});
+render();
+
+window.reset3=function(){found={};n0=3;$("#sh").textContent="3";$("#out").innerHTML="";$("#out2").innerHTML="";$("#say").innerHTML=S0;clearInterval(iv);render();show("intro")};
+$("#restart").addEventListener("click",function(){window.reset3();window.reset2();window.reset1();window.goLevel(0);window.ARC(0)});
+})();
+
+var PLAYER="";window.PN=function(){return PLAYER||"Lucas"};
+(function(){
+var $=function(q){return document.querySelector("#L0 "+q)},cv=$("#cv"),c=cv.getContext("2d"),W=480,H=640;
+var ST=[{n:"Desafio 1: chegue ao computador",bg:"#1d2b53",f:"#26386b",L:[[540,"📱",70,2],[470,"🖱️",-100,2],[400,"laser",0,2400],[330,"⌨️",80,1],[260,"📱",-120,3],[190,"laser",0,2000],[130,"🖱️",110,2]]},
+{n:"Desafio 2: mapa avançado",bg:"#3a1530",f:"#52204a",L:[[560,"📱",110,3],[505,"🖱️",-150,3],[450,"laser",0,1700],[395,"⌨️",120,2],[340,"📱",-170,4],[285,"laser",0,1500],[230,"🖱️",160,3],[175,"⌨️",-140,2],[125,"laser",0,1300]]}];
+ST.push({n:"Desafio 3: mapa final",bg:"#10301f",f:"#18442c",L:[[572,"📱",130,4],[520,"🖱️",-170,3],[468,"laser",0,1400],[416,"⌨️",140,2],[364,"📱",-190,5],[312,"laser",0,1300],[260,"🖱️",180,4],[208,"⌨️",-160,3],[156,"laser",0,1100]]});var WD={"📱":16,"🖱️":16,"⌨️":30},ents,px,py,lives,inv,T,state,stg,K={},raf,last;
+function msg(t,b,f){var m=$("#am");m.innerHTML="<p><b>"+t+"</b></p>";var x=document.createElement("button");x.className="btn";x.textContent=b;x.onclick=function(){m.innerHTML="";f()};m.appendChild(x)}
+function init(s){stg=s;ents=[];ST[s].L.forEach(function(L,i){if(L[1]=="laser")ents.push({k:1,y:L[0],p:L[3],o:i*400});else for(var j=0;j<L[3];j++)ents.push({k:0,e:L[1],y:L[0],x:j*W/L[3]+(i*53)%90,v:L[2]})});px=W/2;py=H-40;inv=0;T=0}
+function ph(e){return((T+e.o)%e.p)/e.p}
+function hit(){if(state!="play")return;lives--;if(lives<=0){state="lose";msg("Os ataques te pegaram! 💥","Tentar de novo",function(){go(stg)})}else{inv=1.5}}
+function win(){state="win";msg("Você chegou ao computador! 🖥️","Entrar no computador",function(){cancelAnimationFrame(raf);window.goLevel(stg+1)})}
+function step(dt){var sp=150*dt;if(K.l)px-=sp;if(K.r)px+=sp;if(K.u)py-=sp;if(K.d)py+=sp;
+px=Math.max(14,Math.min(W-14,px));py=Math.max(20,Math.min(H-20,py));T+=dt*1000;inv-=dt;
+ents.forEach(function(e){if(e.k){if(inv<=0&&ph(e)>.7&&Math.abs(py-e.y)<10)hit();return}
+e.x+=e.v*dt;if(e.x>W+30)e.x=-30;if(e.x<-30)e.x=W+30;
+if(inv<=0&&Math.abs(px-e.x)<WD[e.e]&&Math.abs(py-e.y)<19)hit()});
+if(py<85&&Math.abs(px-W/2)<55&&state=="play")win()}
+function draw(){var S=ST[stg];c.textBaseline="alphabetic";c.textAlign="center";c.fillStyle=S.bg;c.fillRect(0,0,W,H);c.fillStyle=S.f;for(var y=40;y<H;y+=80)c.fillRect(0,y,W,40);
+c.fillStyle="#cfd8ff";c.fillRect(W/2-34,14,68,48);c.fillStyle="#4cc9f0";c.fillRect(W/2-28,20,56,34);c.fillStyle="#cfd8ff";c.fillRect(W/2-8,62,16,10);c.fillRect(W/2-20,72,40,6);
+c.fillStyle="#14213d";c.font="800 14px sans-serif";c.fillText("PC",W/2,42);
+ents.forEach(function(e){if(e.k){var p=ph(e);if(p>.45&&p<=.7){c.fillStyle="rgba(255,60,60,.4)";c.fillRect(0,e.y-1,W,2)}else if(p>.7){c.fillStyle="#ff2d55";c.shadowColor="#ff2d55";c.shadowBlur=14;c.fillRect(0,e.y-5,W,10);c.shadowBlur=0}}
+else{c.font=(e.e=="⌨️"?"44px":"32px")+" sans-serif";c.textBaseline="middle";c.fillText(e.e,e.x,e.y);c.textBaseline="alphabetic"}});
+if(inv<=0||Math.floor(T/100)%2){c.fillStyle="#4361ee";c.fillRect(px-11,py-4,22,22);c.fillStyle="#ffd6a5";c.beginPath();c.arc(px,py-10,11,0,7);c.fill();c.fillStyle="#14213d";c.fillRect(px-5,py-13,3,3);c.fillRect(px+3,py-13,3,3);c.fillRect(px-11,py-21,22,6)}
+c.textAlign="left";c.fillStyle="#fff";c.font="800 15px sans-serif";c.fillText("❤".repeat(Math.max(lives,0))+" "+PN(),10,22)}
+function loop(t){if(!last)last=t;var dt=Math.min(.05,(t-last)/1000);last=t;if(state=="play")step(dt);draw();raf=requestAnimationFrame(loop)}
+function go(s){init(s);if(s==0||lives<=0)lives=3;state="wait";last=0;$("#at").textContent=ST[s].n;$("#nm").classList.add("hid");$("#ar").classList.remove("hid");
+msg("Olá, "+PN()+"! Lasers, celulares, mouses e teclados querem te impedir de chegar ao computador lá em cima."+(s?" Este mapa é bem mais difícil!":"")+" Use as setas, WASD ou os botões. "+(s?"Você segue com "+lives+" vida(s) do desafio anterior.":"Você tem 3 vidas para o jogo inteiro: se for atingido, continua do mesmo lugar, só com uma vida a menos."),"Começar",function(){state="play";last=0});
+cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
+var M={ArrowLeft:"l",a:"l",ArrowRight:"r",d:"r",ArrowUp:"u",w:"u",ArrowDown:"d",s:"d"};
+addEventListener("keydown",function(e){var k=M[e.key];if(k&&!$("#ar").classList.contains("hid")){K[k]=1;e.preventDefault()}});
+addEventListener("keyup",function(e){var k=M[e.key];if(k)K[k]=0});
+document.querySelectorAll("#L0 .pad button").forEach(function(b){var k=b.dataset.k;b.addEventListener("pointerdown",function(e){e.preventDefault();K[k]=1});["pointerup","pointerleave","pointercancel"].forEach(function(v){b.addEventListener(v,function(){K[k]=0})})});
+function sw(t){return t.replace(/Lucas/gi,function(m){return m==m.toUpperCase()?PLAYER.toUpperCase():PLAYER})}
+function obs(){if(/lucas/i.test(PLAYER))return;new MutationObserver(function(ms){ms.forEach(function(m){if(m.type=="characterData"){if(/lucas/i.test(m.target.nodeValue))m.target.nodeValue=sw(m.target.nodeValue)}else m.addedNodes.forEach(function(d){var w=document.createTreeWalker(d,4),n,a=[];if(d.nodeType==3)a.push(d);else while(n=w.nextNode())a.push(n);a.forEach(function(n){if(/lucas/i.test(n.nodeValue)&&!/SCRIPT|STYLE/.test(n.parentNode.tagName))n.nodeValue=sw(n.nodeValue)})})})}).observe(document.body,{childList:true,subtree:true,characterData:true})}
+function rename(){var w=document.createTreeWalker(document.body,4),n,a=[];while(n=w.nextNode())if(/lucas/i.test(n.nodeValue)&&!/SCRIPT|STYLE/.test(n.parentNode.tagName))a.push(n);a.forEach(function(n){n.nodeValue=sw(n.nodeValue)})}
+$("#go").onclick=function(){var v=$("#pname").value.replace(/[<>&"']/g,"").trim();if(!v){$("#pname").focus();return}PLAYER=v;rename();obs();go(0)};
+$("#pname").addEventListener("keydown",function(e){if(e.key=="Enter")$("#go").click()});
+window.ARC=go;document.querySelector("#L2 #next2").onclick=function(){window.goLevel(0);go(2)}})();
+</script>
+</body>
+</html>
